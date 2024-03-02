@@ -10,7 +10,7 @@ import win32api, win32con
 # >>> pyautogui.displayMousePosition()
 BTN_SPIN:list = [1180,660]
 BTN_COLLECT:list = [815,610]
-BTN_CONFIRM:list = [880,580]
+BTN_CONFIRM:list = [1030,580]
 ACTION_SEQUENCE:list = [BTN_SPIN, BTN_COLLECT, BTN_CONFIRM]
 
 def click_btn(pos:list):
