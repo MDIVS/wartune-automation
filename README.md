@@ -8,4 +8,14 @@ If you like it and want to contribute feel free to submit your pull request.
 
 You can also fork and use these scripts as you want, for commercial and non-commercial projects.  
 
+## Requirements
+- **Python**  
+    _I'm using Python 3.11.8_
+- **pyautogui**  
+    _install by running ```pip install pyautogui```_
+- **keyboard**  
+    _install by running ```pip install keyboard```_
+- **pypiwin32**  
+    _install by running ```pip install pypiwin32```_
+
 Cheers
