@@ -1,4 +1,5 @@
 import win32api, win32con # pip install pywin32
+import time
 
 def mouse_click(x,y):
     win32api.SetCursorPos((x,y))
