@@ -1,9 +1,11 @@
+# pip install pyautogui
+# Sometimes you will need to also pip install Pillow
 from pyautogui import *
 import pyautogui
 import time
 import keyboard
 import random
-import win32api, win32con
+import mouse_actions
 
 ONE_CLICK_SELL:bool = False 
 BTN_ONE_CLICK_SELL:list = [1325,640]
@@ -31,12 +33,7 @@ buttons = [
 buttom_index:int = 0
 
 def click_btn(pos:list):
-    click(pos[0],pos[1])
-
-def click(x,y):
-    win32api.SetCursorPos((x,y))
-    win32api.mouse_event(win32con.MOUSEEVENTF_LEFTDOWN,0,0)
-    win32api.mouse_event(win32con.MOUSEEVENTF_LEFTUP,0,0)
+    mouse_actions.mouse_click(pos[0],pos[1])
 
 def time_now():
     now = time.localtime()
@@ -174,6 +171,6 @@ while keep_going:
 
     buttom_to_click = choose_buttom()
     print(buttom_to_click.name, end=" ", flush=True)
-    click(buttom_to_click.pos[0],buttom_to_click.pos[1])
+    click_btn(buttom_to_click.pos)
     # buttom_index = (buttom_index + 1) % len(buttons)
     time.sleep(.5)
