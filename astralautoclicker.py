@@ -3,9 +3,8 @@
 from pyautogui import *
 import pyautogui
 import time
-import keyboard
-import random
 import mouse_actions
+from core.InputEvent import *
 
 ONE_CLICK_SELL:bool = False 
 BTN_ONE_CLICK_SELL:list = [1325,640]
@@ -39,26 +38,31 @@ def time_now():
     now = time.localtime()
     return str(now.tm_year)+'/'+str(now.tm_mon)+'/'+str(now.tm_mday)+' '+str(now.tm_hour)+':'+str(now.tm_min)+':'+str(now.tm_sec)
 
+def _input(event:InputEvent):
+    if isinstance(event, InputKeyEvent):
+        if event.name == 'esc': queue_exit()
+        if event.name == 'space': switch_pause()
+        if event.name == 'enter': click_sintetize()
+
+input_signal.connect(_input)
+
 keep_going = True
 paused = False
 sintetize = False
-def quit_action(callback):
+
+def queue_exit():
     global keep_going
     keep_going = False
     print('quit pressed')
 
-def switch_pause(callback):
+def switch_pause():
     global paused
     paused = not paused
     print('switch pause pressed')
 
-def click_sintetize(callback):
+def click_sintetize():
     global sintetize
     sintetize = True
-
-keyboard.on_press_key('esc', quit_action)
-keyboard.on_press_key('space', switch_pause)
-keyboard.on_press_key('enter', click_sintetize)
 
 def update_buttom_states():
     states = []
