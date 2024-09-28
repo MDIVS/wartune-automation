@@ -31,9 +31,6 @@ buttons = [
 
 buttom_index:int = 0
 
-def click_btn(pos:list):
-    mouse_actions.mouse_click(pos[0],pos[1])
-
 def time_now():
     now = time.localtime()
     return str(now.tm_year)+'/'+str(now.tm_mon)+'/'+str(now.tm_mday)+' '+str(now.tm_hour)+':'+str(now.tm_min)+':'+str(now.tm_sec)
@@ -141,10 +138,6 @@ def print_astrals():
     
     # print(positions)
 
-    
-
-
-
 last_astral_position = [1339, 503]
 
 print(time_now()+' starting wartune auto astral script')
@@ -152,13 +145,13 @@ while keep_going:
     if sintetize:
         sintetize = False
         paused = False
-        click_btn(BTN_ONE_CLICK_SINTETIZE)
+        mouse_actions.mouse_click(BTN_ONE_CLICK_SINTETIZE[0],BTN_ONE_CLICK_SINTETIZE[1])
         time.sleep(.05)
-        click_btn(BTN_ONE_CLICK_SINTETIZE_CONFIRM)
+        mouse_actions.mouse_click(BTN_ONE_CLICK_SINTETIZE_CONFIRM[0],BTN_ONE_CLICK_SINTETIZE[1])
         time.sleep(.05)
     elif check_space():
         if ONE_CLICK_SELL:
-            click_btn(BTN_ONE_CLICK_SELL)
+            mouse_actions.mouse_click(BTN_ONE_CLICK_SELL[0],BTN_ONE_CLICK_SELL[1])
             time.sleep(2)
         if check_space():
             print('not enough space')
@@ -168,13 +161,10 @@ while keep_going:
             paused = False
 
     if paused: continue
-        
-    # print(time_now() + ' clicking at buttom '+str(buttom_index))
 
     update_buttom_states()
 
     buttom_to_click = choose_buttom()
     print(buttom_to_click.name, end=" ", flush=True)
-    click_btn(buttom_to_click.pos)
-    # buttom_index = (buttom_index + 1) % len(buttons)
+    mouse_actions.mouse_click(buttom_to_click.pos[0], buttom_to_click.pos[1])
     time.sleep(.5)
