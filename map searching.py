@@ -10,8 +10,8 @@ def _input(event:InputEvent):
     if isinstance(event, InputKeyEvent):
         if event.name == 'esc': queue_exit()
         if event.name == 'space': switch_pause()
-        if event.name == 'left': move_x(400)
-        if event.name == 'right': move_x(-400)
+        if event.name == 'left': move_x(1500)
+        if event.name == 'right': move_x(-1500)
         if event.name == 'up': change_ydirection(-1)
         if event.name == 'down': change_ydirection(1)
 
@@ -48,8 +48,8 @@ def change_ydirection(ydir:int):
 print(time_now()+' starting map search')
 
 # Exemplo de uso
-start_x, start_y = 500, 500  # Coordenadas iniciais
-end_x, end_y = 600, 600      # Coordenadas finais
+start_x, start_y = 200, 200  # Coordenadas iniciais
+end_x, end_y = 1000 , 1000      # Coordenadas finais
 x_center = int((start_x+end_x)/2)
 y_center = int((start_y+end_y)/2)
 width = end_x-start_x
@@ -69,3 +69,4 @@ while keep_going:
     elif not paused:
         if ydirection > 0: mouse_actions.mouse_drag_and_drop(x_center, end_y, x_center, start_y, .1)
         if ydirection < 0: mouse_actions.mouse_drag_and_drop(x_center, start_y, x_center, end_y, .1)
+        time.sleep(.5)
